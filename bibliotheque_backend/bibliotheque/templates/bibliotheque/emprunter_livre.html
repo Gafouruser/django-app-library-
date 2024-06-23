@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emprunter le livre</title>
+</head>
+<body>
+    <h1>Emprunter {{ livre.titre }}</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p><strong>Titre :</strong> {{ livre.titre }}</p>
+        <p><strong>Auteur :</strong> {{ livre.auteur }}</p>
+        <p><strong>Date de Publication :</strong> {{ livre.date_publication }}</p>
+        {% if livre.image %}
+            <img src="{{ livre.image.url }}" alt="Couverture du livre">
+        {% endif %}
+        <p><strong>Description :</strong> {{ livre.description }}</p>
+        <label for="date_retour">Date de retour</label>
+        <input type="date" id="date_retour" name="date_retour" required>
+        <button type="submit">Emprunter</button>
+    </form>
+</body>
+</html>

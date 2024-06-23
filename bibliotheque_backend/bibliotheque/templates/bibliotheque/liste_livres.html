@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des livres</title>
+</head>
+<body>
+    <h1>Liste des livres</h1>
+    <ul>
+        {% for livre in livres %}
+            <li><a href="{% url 'bibliotheque:details_livre' livre.id %}">{{ livre.titre }}</a></li>
+        {% empty %}
+            <li>Aucun livre disponible pour le moment !</li>
+        {% endfor %}
+    </ul>
+    {% if emprunts_livres %}
+        <p><a href="{% url 'bibliotheque:livres_emprunts' %}">Consulter la liste des livres empruntés</a></p>
+    {% endif %}
+</body>
+</html>

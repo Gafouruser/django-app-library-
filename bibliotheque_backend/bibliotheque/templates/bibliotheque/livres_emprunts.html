@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>La liste des livres empruntés</title>
+</head>
+<body>
+    <h1>La liste des livres empruntés</h1>
+    <ul>
+        {% for emprunt_livre in emprunts_des_livres %}
+            <li><a href="{% url 'bibliotheque:details_livre' emprunt_livre.livre.id %}">{{ emprunt_livre.livre }}</a></li>
+        {% empty %}
+            <li>Auncun livre emprunté pour le moment !</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
